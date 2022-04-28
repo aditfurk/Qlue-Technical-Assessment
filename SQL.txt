@@ -1,0 +1,23 @@
+Assumptions: - "total" column in transactions table is representing quantity of the item
+             - example for price format that used in items table is "40000"
+
+
+No.1
+
+SELECT p.name, SUM(t.total* CAST(i.price AS INTEGER)) AS total_price  FROM persons p
+LEFT JOIN transactions t ON p.id = t.person_id 
+LEFT JOIN items i ON i.id = t.item_id
+GROUP BY p.name;
+
+No.2
+
+SELECT SUM(t.total* CAST(i.price AS INTEGER)) AS "Total", TO_CHAR(t.date , 'Month') AS "Month", CAST(DATE_PART('Year', t.date) AS varchar) AS "Year" FROM transactions t
+LEFT JOIN items i ON i.id = t.item_id
+GROUP BY "Month", "Year";
+
+No.3
+
+SELECT p.name, COUNT(DISTINCT t.item_id) AS total_variety FROM transactions t 
+LEFT JOIN persons p ON p.id = t.person_id
+GROUP BY p.name
+ORDER BY total_variety DESC;
