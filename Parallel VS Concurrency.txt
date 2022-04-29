@@ -1,0 +1,3 @@
+Concurrency is a terms that can be called when two or more tasks can start, or run, and finished in overlaping time periods. It doesn't necessarily have to start or run at the exact same time. For example, if there are 2 different tasks, task number 2 can run even when task number 1 is only 90% finished.
+
+Parallelism is a concurrency, but when two or more tasks is worked in the exact same time. For example, computer with multi-core, on timestamp 0, core number 1 working on task 1, and core number 2 working on task 2.
